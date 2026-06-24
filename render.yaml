@@ -1,0 +1,20 @@
+services:
+  # 1. Python FastAPI Backend Service
+  - type: web
+    name: neonchat-backend
+    env: python
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false # Prompts for this secret key in the Render dashboard during setup
+      - key: PYTHON_VERSION
+        value: 3.10.12
+
+  # 2. Static Web Frontend Service
+  - type: static
+    name: neonchat-frontend
+    env: static
+    plan: free
+    publishPath: ./frontend

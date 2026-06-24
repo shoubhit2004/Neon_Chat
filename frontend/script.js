@@ -15,6 +15,12 @@ const PERSONA_LABELS = {
     "PRODUCTIVITY_COMMANDER": { name: "Productivity Commander", avatar: "🎯" }
 };
 
+// API Endpoint Configuration
+// Automatically switches between localhost for development and Render for production
+const API_BASE_URL = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
+    ? "http://127.0.0.1:8000"
+    : "https://neonchat-backend.onrender.com"; // Replace with your actual deployed Render backend URL
+
 let typingIndicator = null;
 
 // Initialization when DOM is fully loaded
@@ -322,8 +328,8 @@ async function sendMessage() {
     }
 
     try {
-        // Fetch to original local backend service
-        let response = await fetch("http://127.0.0.1:8000/chat", {
+        // Fetch to backend service
+        let response = await fetch(`${API_BASE_URL}/chat`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
