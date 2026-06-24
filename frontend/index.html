@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeonChat // Futuristic AI Console</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Neon Ambient Blobs -->
+    <div class="glow-bg">
+        <div class="glow-blob blob-1"></div>
+        <div class="glow-blob blob-2"></div>
+    </div>
+
+    <div class="app-wrapper">
+        <!-- Top Fixed Navigation -->
+        <header class="navbar">
+            <div class="brand-container">
+                <div class="logo-glow-wrapper">
+                    <!-- Zap / Lightning Icon -->
+                    <i data-lucide="zap" style="width: 28px; height: 28px; fill: currentColor;"></i>
+                </div>
+                <span class="brand-name">NeonChat</span>
+            </div>
+            
+            <div class="nav-actions">
+                <!-- Toggle Sidebar on Mobile -->
+                <button id="sidebar-toggle" class="icon-btn sidebar-toggle-btn" aria-label="Toggle Personas">
+                    <i data-lucide="users" style="width: 20px; height: 20px;"></i>
+                </button>
+                <!-- New Chat Button -->
+                <button id="new-chat" class="icon-btn" aria-label="New Chat" title="Start New Chat">
+                    <i data-lucide="plus" style="width: 20px; height: 20px;"></i>
+                </button>
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme">
+                    <i id="theme-icon" data-lucide="sun" style="width: 20px; height: 20px;"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Sidebar Overlay (for Mobile dismissals) -->
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <!-- Main Workspace -->
+        <main class="main-viewport">
+            
+            <!-- Persona Selector Sidebar -->
+            <aside id="persona-sidebar" class="persona-sidebar">
+                <div class="sidebar-header">
+                    <h2><i data-lucide="sparkles" style="width: 18px; height: 18px;"></i> Characters</h2>
+                    <p>Choose companion conversation style</p>
+                </div>
+                <div class="persona-grid">
+                    
+                    <!-- 1. Friendly -->
+                    <label class="persona-card">
+                        <input type="radio" name="persona" value="FRIENDLY" checked>
+                        <div class="persona-info">
+                            <div class="persona-header-row">
+                                <div class="persona-avatar">💬</div>
+                                <span class="persona-title">Friendly AI</span>
+                            </div>
+                            <p class="persona-desc">Warm, casual, and supportive chat assistant.</p>
+                        </div>
+                    </label>
+
+                    <!-- 2. Toxic Girlfriend -->
+                    <label class="persona-card">
+                        <input type="radio" name="persona" value="TOXIC_GF">
+                        <div class="persona-info">
+                            <div class="persona-header-row">
+                                <div class="persona-avatar">💅</div>
+                                <span class="persona-title">Toxic Girlfriend</span>
+                            </div>
+                            <p class="persona-desc">Jealous, dramatic, clingy, playful roaster.</p>
+                        </div>
+                    </label>
+
+                    <!-- 3. Indian Mom -->
+                    <label class="persona-card">
+                        <input type="radio" name="persona" value="INDIAN_MOM">
+                        <div class="persona-info">
+                            <div class="persona-header-row">
+                                <div class="persona-avatar">🦚</div>
+                                <span class="persona-title">Indian Mom</span>
+                            </div>
+                            <p class="persona-desc">Caring scolder in Hinglish, obsessed with health & sleep.</p>
+                        </div>
+                    </label>
+
+                    <!-- 4. Savage Roast -->
+                    <label class="persona-card">
+                        <input type="radio" name="persona" value="ROAST_BOT">
+                        <div class="persona-info">
+                            <div class="persona-header-row">
+                                <div class="persona-avatar">🪓</div>
+                                <span class="persona-title">Savage Roast</span>
+                            </div>
+                            <p class="persona-desc">Brutally sarcastic stand-up comedian roasting everyone.</p>
+                        </div>
+                    </label>
+
+                    <!-- 5. Gen Z Brainrot -->
+                    <label class="persona-card">
+                        <input type="radio" name="persona" value="GENZ_BRAINROT">
+                        <div class="persona-info">
+                            <div class="persona-header-row">
+                                <div class="persona-avatar">💀</div>
+                                <span class="persona-title">Gen Z Brainrot</span>
+                            </div>
+                            <p class="persona-desc">Meme-addicted slang speaker with npc cooked vibes.</p>
+                        </div>
+                    </label>
+
+                    <!-- 6. Sigma Guru -->
+                    <label class="persona-card">
+                        <input type="radio" name="persona" value="SIGMA_GURU">
+                        <div class="persona-info">
+                            <div class="persona-header-row">
+                                <div class="persona-avatar">👑</div>
+                                <span class="persona-title">Sigma Guru</span>
+                            </div>
+                            <p class="persona-desc">Delusional grindset coach turning normal life legendary.</p>
+                        </div>
+                    </label>
+
+                    <!-- 7. Medieval Wizard -->
+                    <label class="persona-card">
+                        <input type="radio" name="persona" value="MEDIEVAL_WIZARD">
+                        <div class="persona-info">
+                            <div class="persona-header-row">
+                                <div class="persona-avatar">🧙‍♂️</div>
+                                <span class="persona-title">Medieval Wizard</span>
+                            </div>
+                            <p class="persona-desc">Wise fantasy wizard sharing scrolls of ancient sorcery.</p>
+                        </div>
+                    </label>
+
+                    <!-- 8. High Uncle -->
+                    <label class="persona-card">
+                        <input type="radio" name="persona" value="HIGH_UNCLE">
+                        <div class="persona-info">
+                            <div class="persona-header-row">
+                                <div class="persona-avatar">🍺</div>
+                                <span class="persona-title">High Uncle</span>
+                            </div>
+                            <p class="persona-desc">Confusing philosophical rants and absurd random ideas.</p>
+                        </div>
+                    </label>
+
+                    <!-- 9. Coding Mentor -->
+                    <label class="persona-card">
+                        <input type="radio" name="persona" value="CODING_MENTOR">
+                        <div class="persona-info">
+                            <div class="persona-header-row">
+                                <div class="persona-avatar">💻</div>
+                                <span class="persona-title">Coding Mentor</span>
+                            </div>
+                            <p class="persona-desc">Logical, helpful programmer teaching code step-by-step.</p>
+                        </div>
+                    </label>
+
+                    <!-- 10. Strict Teacher -->
+                    <label class="persona-card">
+                        <input type="radio" name="persona" value="STRICT_TEACHER">
+                        <div class="persona-info">
+                            <div class="persona-header-row">
+                                <div class="persona-avatar">📚</div>
+                                <span class="persona-title">Strict Teacher</span>
+                            </div>
+                            <p class="persona-desc">Disciplined academic setting mini homework and tests.</p>
+                        </div>
+                    </label>
+
+                    <!-- 11. Productivity Commander -->
+                    <label class="persona-card">
+                        <input type="radio" name="persona" value="PRODUCTIVITY_COMMANDER">
+                        <div class="persona-info">
+                            <div class="persona-header-row">
+                                <div class="persona-avatar">🎯</div>
+                                <span class="persona-title">Productivity Commander</span>
+                            </div>
+                            <p class="persona-desc">Tactical mission leader pushing action and discipline.</p>
+                        </div>
+                    </label>
+
+                </div>
+            </aside>
+
+            <!-- Chat Board Panel -->
+            <section class="chat-console">
+                
+                <!-- Message Viewport -->
+                <div id="chat-messages" class="chat-messages">
+                    <!-- Default Welcome View -->
+                    <div id="welcome-view" class="welcome-container">
+                        <div class="welcome-icon-glow">
+                            <i data-lucide="bot" style="width: 42px; height: 42px;"></i>
+                        </div>
+                        <h1 class="welcome-title">NeonChat</h1>
+                        <p class="welcome-subtitle">Welcome to the future of AI conversation. Choose a persona, type a message below, and witness energetic cybernetic replies.</p>
+                    </div>
+                </div>
+
+                <!-- Input Panel -->
+                <footer class="input-panel">
+                    <div class="input-container-glow">
+                        <input type="text" id="message" class="chat-input" placeholder="Transmit a message to NeonChat..." autocomplete="off">
+                        <span id="char-counter" class="char-counter">0/250</span>
+                        <button id="send-button" class="send-btn" onclick="sendMessage()" aria-label="Send Message">
+                            <i data-lucide="send" style="width: 18px; height: 18px;"></i>
+                        </button>
+                    </div>
+                </footer>
+
+            </section>
+        </main>
+    </div>
+
+    <!-- Lucide Icons Library and Core Script -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="script.js"></script>
+</body>
+</html>
