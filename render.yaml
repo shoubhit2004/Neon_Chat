@@ -16,5 +16,4 @@ services:
   - type: web
     name: neonchat-frontend
     env: static
-    plan: free
     staticPublishPath: ./frontend
