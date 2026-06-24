@@ -138,6 +138,10 @@ PERSONAS = {
 }
 
 #app
+@app.get("/")
+async def root():
+    return {"status": "active", "message": "NeonChat Backend is running"}
+
 @app.post("/chat")
 @limiter.limit("5/minute")
 async def chat(request: Request, body: ChatRequest):
