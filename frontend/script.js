@@ -19,7 +19,7 @@ const PERSONA_LABELS = {
 // Automatically switches between localhost for development and Render for production
 const API_BASE_URL = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
     ? "http://127.0.0.1:8000"
-    : "https://neonchat-backend.onrender.com"; // Replace with your actual deployed Render backend URL
+    : "https://neonchat-backend-vrvs.onrender.com"; // Replace with your actual deployed Render backend URL
 
 let typingIndicator = null;
 
